@@ -90,36 +90,16 @@ export default {
         shopNotice: ''
       },
       dataRule: {
-        shopSn: [
-          { required: true, message: '店铺编号不能为空', trigger: 'blur' }
-        ],
-        userId: [
-          { required: true, message: '店铺所有人id不能为空', trigger: 'blur' }
-        ],
-        isSelf: [
-          { required: true, message: '是否自营不能为空', trigger: 'blur' }
-        ],
-        shopName: [
-          { required: true, message: '店铺名称不能为空', trigger: 'blur' }
-        ],
-        shopKeeper: [
-          { required: true, message: '店主名称不能为空', trigger: 'blur' }
-        ],
-        telephone: [
-          { required: true, message: '店主手机号不能为空', trigger: 'blur' }
-        ],
-        shopImg: [
-          { required: true, message: '店铺图标不能为空', trigger: 'blur' }
-        ],
-        shopAddress: [
-          { required: true, message: '地址不能为空', trigger: 'blur' }
-        ],
-        bankId: [
-          { required: true, message: '银行id不能为空', trigger: 'blur' }
-        ],
-        bankNo: [
-          { required: true, message: '银行卡号不能为空', trigger: 'blur' }
-        ],
+        shopSn: [{ required: true, message: '店铺编号不能为空', trigger: 'blur' }],
+        userId: [{ required: true, message: '店铺所有人id不能为空', trigger: 'blur' }],
+        isSelf: [{ required: true, message: '是否自营不能为空', trigger: 'blur' }],
+        shopName: [{ required: true, message: '店铺名称不能为空', trigger: 'blur' }],
+        shopKeeper: [{ required: true, message: '店主名称不能为空', trigger: 'blur' }],
+        telephone: [{ required: true, message: '店主手机号不能为空', trigger: 'blur' }],
+        shopImg: [{ required: true, message: '店铺图标不能为空', trigger: 'blur' }],
+        shopAddress: [{ required: true, message: '地址不能为空', trigger: 'blur' }],
+        bankId: [{ required: true, message: '银行id不能为空', trigger: 'blur' }],
+        bankNo: [{ required: true, message: '银行卡号不能为空', trigger: 'blur' }],
         shopActive: [
           {
             required: true,
@@ -141,15 +121,9 @@ export default {
             trigger: 'blur'
           }
         ],
-        showStatus: [
-          { required: true, message: '删除状态不能为空', trigger: 'blur' }
-        ],
-        createTime: [
-          { required: true, message: '创建时间不能为空', trigger: 'blur' }
-        ],
-        noSettledOrderNum: [
-          { required: true, message: '未结算的订单数不能为空', trigger: 'blur' }
-        ],
+        showStatus: [{ required: true, message: '删除状态不能为空', trigger: 'blur' }],
+        createTime: [{ required: true, message: '创建时间不能为空', trigger: 'blur' }],
+        noSettledOrderNum: [{ required: true, message: '未结算的订单数不能为空', trigger: 'blur' }],
         noSettledOrderFee: [
           {
             required: true,
@@ -157,9 +131,7 @@ export default {
             trigger: 'blur'
           }
         ],
-        shopNotice: [
-          { required: true, message: '店铺公告不能为空', trigger: 'blur' }
-        ]
+        shopNotice: [{ required: true, message: '店铺公告不能为空', trigger: 'blur' }]
       }
     }
   },
@@ -167,7 +139,7 @@ export default {
     dataForm: {
       handler(val, oldVal) {
         if (val) {
-          const user = this.userList.filter((item) => {
+          const user = this.userList.filter(item => {
             return item.userId === val.userId
           })[0]
           if (user) {
@@ -217,12 +189,10 @@ export default {
     },
     // 表单提交
     dataFormSubmit() {
-      this.$refs['dataForm'].validate((valid) => {
+      this.$refs['dataForm'].validate(valid => {
         if (valid) {
           this.$http({
-            url: this.$http.adornUrl(
-              `/shop/shop/${!this.dataForm.id ? 'save' : 'update'}`
-            ),
+            url: this.$http.adornUrl(`/shop/shop/${!this.dataForm.id ? 'save' : 'update'}`),
             method: 'post',
             data: this.$http.adornData({
               id: this.dataForm.id || undefined,
